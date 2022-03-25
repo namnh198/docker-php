@@ -1,0 +1,10 @@
+www/*
+!www/.gitkeep
+config/nginx/*
+!config/nginx/default.conf
+data/mysql/*
+!data/mysql/.gitkeep
+data/elasticsearch/*
+!data/elasticsearch/.gitkeep
+logs/*
+!logs/.gitkeep

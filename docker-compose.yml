@@ -1,0 +1,58 @@
+version: '3.5'
+
+services:
+
+  nginx:
+    image: nginx:latest
+    container_name: lemp_nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - "./config/nginx/:/etc/nginx/conf.d/"
+      - "./logs:/var/log/nginx/"
+      - "./www/:/var/www/"
+
+  php:
+    container_name: lemp_php
+    restart: always
+    build:
+      context: ./build
+      dockerfile: php.Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - "./www/:/var/www/"
+
+  mysql:
+    image: mysql:8.0
+    container_name: lemp_mysql
+    restart: always
+    cap_add:
+      - SYS_NICE
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "false"
+      MYSQL_ROOT_PASSWORD: "root"
+    volumes:
+      - "./data/mysql/:/var/lib/mysql/"
+      - "./config/mysql/:/etc/mysql/conf.d"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: lemp_phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+
+  elasticsearch:
+    image: elasticsearch:7.9.3
+    container_name: lemp_elasticsearch
+    restart: always
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    volumes:
+      - "./data/elasticsearch/:/usr/share/elasticsearch/data/"
