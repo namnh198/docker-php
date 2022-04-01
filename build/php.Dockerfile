@@ -53,7 +53,7 @@ RUN curl -fSL 'http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_li
 
 # Install Composer
 RUN curl https://getcomposer.org/composer-2.phar -o composer \
-    && mv composer /usr/local/bin/composer && chmod 750 /usr/local/bin/composer
+    && mv composer /usr/local/bin/composer && chmod 755 /usr/local/bin/composer
 
 # Install NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
