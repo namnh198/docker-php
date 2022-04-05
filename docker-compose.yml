@@ -1,7 +1,6 @@
-version: '3.5'
+version: "3.5"
 
 services:
-
   nginx:
     image: nginx:latest
     container_name: lemp_nginx
@@ -46,13 +45,13 @@ services:
     environment:
       PMA_HOST: mysql
 
-  elasticsearch:
-    image: elasticsearch:7.9.3
-    container_name: lemp_elasticsearch
-    restart: always
-    environment:
-      - discovery.type=single-node
-    ports:
-      - "9200:9200"
-    volumes:
-      - "./data/elasticsearch/:/usr/share/elasticsearch/data/"
+  # elasticsearch:
+  #   image: elasticsearch:7.9.3
+  #   container_name: lemp_elasticsearch
+  #   restart: always
+  #   environment:
+  #     - discovery.type=single-node
+  #   ports:
+  #     - "9200:9200"
+  #   volumes:
+  #     - "./data/elasticsearch/:/usr/share/elasticsearch/data/"

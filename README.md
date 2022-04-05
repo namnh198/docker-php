@@ -1,6 +1,7 @@
 # Docker PHP
 
 ## Docker HUB
+
 - Nginx
 - Mysql 8.0
 - PHP-FPM 7.4
@@ -21,18 +22,18 @@ docker-compose up -d
 
 ## Use command
 
-ADD Alias for .bashrc or .zshrc
+ADD PATH for .bashrc or .zshrc
 
 ```
-alias exec="$HOME/docker-php/bin/exec"
-alias php="$HOME/docker-php/bin/php"
-alias mysql="$HOME/docker-php/bin/mysql"
-alias xdebug="$HOME/docker-php/bin/xdebug"
+if [ -d "$HOME/docker-php/bin" ] ; then
+    PATH="$HOME/docker-php/bin:$PATH"
+fi
 ```
 
 ## Command
+
 - Exec PHP Container: `exec`
-- Check PHP Version: `php -v`
+- Check PHP Version: `php -v`. PHP only run & execute `PHP file` in `www`
 - MySQL Exec: `mysql -uroot -proot`
 - Xdebug Status: `xdebug status`
 - Xdebug Enable: `xdebug enable`

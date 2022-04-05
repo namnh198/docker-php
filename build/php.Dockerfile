@@ -56,7 +56,7 @@ RUN curl https://getcomposer.org/composer-2.phar -o composer \
     && mv composer /usr/local/bin/composer && chmod 755 /usr/local/bin/composer
 
 # Install NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs
     
 RUN groupadd --gid $USER_GID $USERNAME \

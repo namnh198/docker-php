@@ -1,3 +1,7 @@
 #!/bin/bash
 [ -z "$1" ] && echo "Please specify a CLI command (ex. ls)" && exit
-docker exec -it lemp_php php "$@"
+DIR=$(which php)
+DIR="${DIR/\bin\/php/}"
+WORKDIR="${PWD/$DIR/\/var\/}"
+docker exec -it -w $WORKDIR lemp_php php "$@"
+
