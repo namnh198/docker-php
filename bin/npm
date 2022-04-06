@@ -1,0 +1,7 @@
+#!/bin/bash
+[ -z "$1" ] && echo "Please specify a CLI command (ex. ls)" && exit
+DIR=$(which npm)
+DIR="${DIR/\bin\/npm/}"
+WORKDIR="${PWD/$DIR/\/var\/}"
+docker exec -it -w $WORKDIR lemp_php npm "$@"
+
