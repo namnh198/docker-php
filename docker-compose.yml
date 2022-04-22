@@ -44,14 +44,16 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
 
-  # elasticsearch:
-  #   image: elasticsearch:7.9.3
-  #   container_name: lemp_elasticsearch
-  #   restart: always
-  #   environment:
-  #     - discovery.type=single-node
-  #   ports:
-  #     - "9200:9200"
-  #   volumes:
-  #     - "./data/elasticsearch/:/usr/share/elasticsearch/data/"
+  elasticsearch:
+    image: elasticsearch:7.9.3
+    container_name: lemp_elasticsearch
+    restart: always
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    volumes:
+      - "./data/elasticsearch/:/usr/share/elasticsearch/data/"

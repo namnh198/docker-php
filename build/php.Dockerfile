@@ -47,7 +47,8 @@ RUN curl -fSL 'http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_li
     && tar -xf ioncube.tar.gz -C ioncube --strip-components=1 \
     && rm ioncube.tar.gz \
     && export PHP_EXT_DIR=$(php-config --extension-dir) \
-    && mv ioncube/ioncube_loader_lin_7.4.so "${PHP_EXT_DIR}/ioncube.so" \
+    && export PHP_VERSION=$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;") \
+    && mv ioncube/ioncube_loader_lin_${PHP_VERSION}.so "${PHP_EXT_DIR}/ioncube.so" \
     && rm -r ioncube \
     && docker-php-ext-enable ioncube
 
