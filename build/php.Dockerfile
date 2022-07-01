@@ -1,6 +1,6 @@
 FROM php:7.4-fpm
 
-ARG USERNAME=magento
+ENV USERNAME=magento
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
@@ -76,6 +76,8 @@ ADD .bash_aliases /usr/local/share/.bash_aliases
 RUN printf '\nfunction nonzero_return() { RETVAL=$? ; [ $RETVAL -ne 0 ] && echo "[exit code: $RETVAL]" ; }\n \
     PS1="\n\[\e[37m\][+]\[\e[m\]\[\e[m\] \[\e[32m\]\u\[\e[m\] \[\e[34m\]@\[\e[m\] \[\e[36m\]\w \[\e[31m\]\`nonzero_return\`\[\e[m\]\n\\\$ > "\n \
     . /usr/local/share/.bash_aliases\n' | tee --append /etc/bash.bashrc /home/$USERNAME/.bashrc 
+    
+RUN docker-php-ext-install -j$(nproc) exif
     
 RUN apt-get autoremove -y \
     && apt-get clean -y \

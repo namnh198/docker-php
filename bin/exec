@@ -1,2 +1,2 @@
 #!/bin/bash
-docker exec -it lemp_php bash
+docker exec -it lemp_php /bin/bash

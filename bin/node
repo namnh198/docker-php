@@ -1,7 +1,0 @@
-#!/bin/bash
-[ -z "$1" ] && echo "Please specify a CLI command (ex. ls)" && exit
-DIR=$(which node)
-DIR="${DIR/\bin\/node/}"
-WORKDIR="${PWD/$DIR/\/var\/}"
-docker exec -it -w $WORKDIR lemp_php node "$@"
-
