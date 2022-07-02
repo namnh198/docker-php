@@ -17,6 +17,7 @@
 ```
 git clone https://github.com/namnh198/docker-php.git
 cd docker-php
+cp .env.example .env #change config here
 docker-compose up -d
 ```
 
