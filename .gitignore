@@ -2,11 +2,8 @@ www/*
 !www/.gitkeep
 config/nginx/*
 config/mkcert/*
+!config/mkcert/.gitkeep
 !config/nginx/default.conf
-data/mysql/*
-!data/mysql/.gitkeep
-data/elasticsearch/*
-!data/elasticsearch/.gitkeep
 logs/*
 !logs/.gitkeep
 .env
